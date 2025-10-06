@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Facebook</title>
+    <link rel="stylesheet" href="/css/facebook-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <base href="/perfil/">
+</head>
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <!-- Logo e Busca -->
+            <div class="navbar-left">
+                <div class="topbar__left">
+      <a href="../home.html" class="topbar__logo" aria-label="facebook">f</a>
+    </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Pesquisar no Facebook">
+                </div>
+            </div>
+            
+            <!-- Menu Central -->
+            <div class="navbar-center">
+                <button class="nav-icon active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 14.5V22h2.5v-6H6v6h2v-6h2v6h2v-6h2v6h2z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu Direito -->
+            <div class="navbar-right">
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                </button>
+                <div class="user-avatar-small">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Avatar" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Página Principal do Perfil -->
+    <div class="profile-page">
+        <!-- Header do Perfil -->
+        <div class="profile-header">
+            <!-- Capa do Perfil -->
+            <div class="profile-cover">
+                <!-- Botão para adicionar foto de capa -->
+                <button class="add-cover-photo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                    </svg>
+                    Adicionar foto de capa
+                </button>
+                
+                <!-- Avatar -->
+                <div class="avatar-wrap">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" alt="Foto do perfil" class="avatar-lg" loading="lazy">
+                    <button class="edit-avatar">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Informações do Perfil -->
+            <div class="profile-info">
+                <div class="profile-info-content">
+                    <div class="profile-info-left">
+                        <h1 class="profile-name">Eric Leonardo Carvalho</h1>
+                        <div class="profile-friends">73 amigos</div>
+                    </div>
+                    <div class="profile-info-right">
+                        <!-- Botões de Ação -->
+                        <div class="profile-actions">
+                            <button class="btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                </svg>
+                                + Adicionar à história
+                            </button>
+                            <button class="btn btn-outline">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                                </svg>
+                                Editar perfil
+                            </button>
+                            <button class="btn btn-secondary btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs de Navegação -->
+            <div class="profile-tabs">
+                <button class="tab active">Postagens</button>
+            <a href="profile-sobre.html" class="tab">Sobre</a>
+            <a href="profile-amigos.html" class="tab">Amigos</a>
+                <button class="tab">Fotos</button>
+                <button class="tab">Vídeos</button>
+                <button class="tab">Check-ins</button>
+                <button class="tab">
+                    Mais
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+                <button class="tab-menu">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+            <!-- Sidebar Esquerda -->
+            <div class="left-sidebar">
+                <!-- Seção Introdução -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <h3>Introdução</h3>
+                    </div>
+                    <div class="sidebar-content">
+                        <button class="intro-btn">Adicionar biografia</button>
+                        <div class="intro-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                            <span>Mora em Belo Horizonte, Brasil</span>
+                        </div>
+                        <div class="intro-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>De Sardoá</span>
+                        </div>
+                        <button class="intro-btn">Editar detalhes</button>
+                        <button class="intro-btn">Adicionar destaque</button>
+                    </div>
+                </div>
+
+                <!-- Seção Fotos -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <h3>Fotos</h3>
+                        <a href="#" class="see-all-link">Ver todas as fotos</a>
+                    </div>
+                    <div class="photos-grid">
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop" alt="Foto 1" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1489599806-1a0a4b3b0a0a?w=100&h=100&fit=crop" alt="Foto 2" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Foto 3" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop" alt="Foto 4" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Foto 5" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Foto 6" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Foto 7" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop" alt="Foto 8" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Foto 9" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Central -->
+            <div class="feed-container">
+                <!-- Área de Criar Postagem -->
+                <div class="post-form-card">
+                    <div class="post-form-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+                             alt="Avatar" class="post-form-avatar">
+                        <textarea class="post-form-textarea" placeholder="O que está em sua mente?"></textarea>
+                    </div>
+                    <div class="post-form-actions">
+                        <div class="post-form-buttons">
+                            <button class="post-form-button">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#f02849">
+                                    <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>
+                                </svg>
+                                Vídeo ao vivo
+                            </button>
+                            <button class="post-form-button">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#45bd62">
+                                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                                </svg>
+                                Foto/vídeo
+                            </button>
+                            <button class="post-form-button">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877f2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                Evento de vida
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Postagens -->
+                <div class="posts-section">
+                    <div class="posts-header">
+                        <h3>Postagens</h3>
+                        <div class="posts-controls">
+                            <div class="view-tabs">
+                                <button class="view-tab active">Visualização de lista</button>
+                                <button class="view-tab">Visualização em grade</button>
+                            </div>
+                            <div class="posts-actions">
+                                <button class="posts-action-btn">Filtros</button>
+                                <button class="posts-action-btn">Gerenciar postagens</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="posts-info">
+                        <p>3 amigos postaram em seu linha do tempo para seu aniversário.</p>
+                    </div>
+
+                    <!-- Cards de Postagens -->
+                    <div class="posts-feed">
+                        <!-- Postagem 1 - Cida Santos -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Cida Santos" class="post-avatar">
+                                <div class="post-info">
+                                    <div class="post-author">
+                                        <span>Cida Santos</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                        </svg>
+                                        <span class="post-target">Eric Leonardo Carvalho</span>
+                                    </div>
+                                    <div class="post-time">12 de fevereiro</div>
+                                </div>
+                                <button class="post-menu">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-text">Parabéns! 🎉🥳</div>
+                            </div>
+                            <div class="post-actions">
+                                <div class="post-reactions">
+                                    <button class="react like">
+                                        <span>Curtir</span>
+                                    </button>
+                                    <button class="react comment">
+                                        <span>Comentário</span>
+                                    </button>
+                                    <button class="react share">
+                                        <span>Compartilhar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="post-comment-section">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
+                                     alt="Eric" class="comment-avatar">
+                                <div class="comment-input-wrapper">
+                                    <input type="text" placeholder="Comente como Eric Leonardo Carvalho" class="comment-input">
+                                    <div class="comment-icons">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Postagem 2 - Dirla Santos II -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Dirla Santos II" class="post-avatar">
+                                <div class="post-info">
+                                    <div class="post-author">
+                                        <span>Dirla Santos II</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                        </svg>
+                                        <span class="post-target">Eric Leonardo Carvalho</span>
+                                    </div>
+                                    <div class="post-time">12 de fevereiro</div>
+                                </div>
+                                <button class="post-menu">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-text">Feliz aniversário! 🎉🥳</div>
+                            </div>
+                            <div class="post-actions">
+                                <div class="post-reactions">
+                                    <button class="react like">
+                                        <span>Curtir</span>
+                                    </button>
+                                    <button class="react comment">
+                                        <span>Comentário</span>
+                                    </button>
+                                    <button class="react share">
+                                        <span>Compartilhar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="post-comment-section">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
+                                     alt="Eric" class="comment-avatar">
+                                <div class="comment-input-wrapper">
+                                    <input type="text" placeholder="Comente como Eric Leonardo Carvalho" class="comment-input">
+                                    <div class="comment-icons">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Postagem 3 - Marcos Júnio -->
+                        <div class="post-card">
+                            <div class="post-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Marcos Júnio" class="post-avatar">
+                                <div class="post-info">
+                                    <div class="post-author">
+                                        <span>Marcos Júnio</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                        </svg>
+                                        <span class="post-target">Eric Leonardo Carvalho</span>
+                                    </div>
+                                    <div class="post-time">12 de fevereiro</div>
+                                </div>
+                                <button class="post-menu">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-text">Feliz aniversário, Eric! ❤️</div>
+                            </div>
+                            <div class="post-actions">
+                                <div class="post-reactions">
+                                    <button class="react like">
+                                        <span>Curtir</span>
+                                    </button>
+                                    <button class="react comment">
+                                        <span>Comentário</span>
+                                    </button>
+                                    <button class="react share">
+                                        <span>Compartilhar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="post-comment-section">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
+                                     alt="Eric" class="comment-avatar">
+                                <div class="comment-input-wrapper">
+                                    <input type="text" placeholder="Comente como Eric Leonardo Carvalho" class="comment-input">
+                                    <div class="comment-icons">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para Interatividade -->
+    <script>
+        // Funcionalidade das tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Funcionalidade dos botões de reação
+        document.querySelectorAll('.react').forEach(react => {
+            react.addEventListener('click', function() {
+                if (this.classList.contains('like')) {
+                    this.classList.toggle('active');
+                }
+            });
+        });
+
+        // Funcionalidade do formulário de post
+        const textarea = document.querySelector('.post-form-textarea');
+        const submitBtn = document.querySelector('.post-form-submit');
+        
+        textarea.addEventListener('input', function() {
+            submitBtn.disabled = this.value.trim() === '';
+        });
+
+        // Funcionalidade do menu de posts
+        document.querySelectorAll('.post-menu').forEach(menu => {
+            menu.addEventListener('click', function() {
+                alert('Menu do post clicado!');
+            });
+        });
+
+        // Funcionalidade dos botões de ação do perfil
+        document.querySelectorAll('.profile-actions .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.textContent.trim();
+                if (text.includes('Curtir')) {
+                    this.classList.toggle('active');
+                    this.textContent = this.classList.contains('active') ? '👍 Curtido' : '👍 Curtir';
+                } else {
+                    alert(`${text} clicado!`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

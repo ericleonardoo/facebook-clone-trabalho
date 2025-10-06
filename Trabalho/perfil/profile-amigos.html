@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigos - Eric Leonardo Carvalho | Facebook</title>
+    <link rel="stylesheet" href="/css/facebook-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <base href="/perfil/">
+</head>
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <!-- Logo e Busca -->
+            <div class="navbar-left">
+                <div class="topbar__left">
+      <a href="../home.html" class="topbar__logo" aria-label="facebook">f</a>
+      
+    </div>
+            
+    <div class="search-box">
+                    <input type="text" placeholder="Pesquisar no Facebook">
+                </div>
+            <!-- Menu Central -->
+            <div class="navbar-center">
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 14.5V22h2.5v-6H6v6h2v-6h2v6h2v-6h2v6h2z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu Direito -->
+            <div class="navbar-right">
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                </button>
+                <div class="user-avatar-small">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Avatar">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header do Perfil -->
+    <div class="profile-header">
+        <!-- Capa do Perfil -->
+        <div class="profile-cover">
+            <!-- Botão para adicionar foto de capa -->
+            <button class="add-cover-photo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                </svg>
+                Adicionar foto de capa
+            </button>
+            
+            <!-- Avatar -->
+            <div class="avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" 
+                     alt="Foto do perfil" class="avatar-lg">
+                <button class="edit-avatar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Informações do Perfil -->
+        <div class="profile-info">
+            <div class="profile-info-content">
+                <div class="profile-info-left">
+                    <h1 class="profile-name">Eric Leonardo Carvalho</h1>
+                    <div class="profile-friends">73 amigos</div>
+                </div>
+                <div class="profile-info-right">
+                    <!-- Botões de Ação -->
+                    <div class="profile-actions">
+                        <button class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                            </svg>
+                            + Adicionar à história
+                        </button>
+                        <button class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                            </svg>
+                            Editar perfil
+                        </button>
+                        <button class="btn btn-secondary btn-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs de Navegação -->
+        <div class="profile-tabs">
+            <a href="indexprofile.html" class="tab">Postagens</a>
+            <a href="profile-sobre.html" class="tab">Sobre</a>
+            <a href="profile-amigos.html" class="tab active">Amigos</a>
+            <button class="tab">Fotos</button>
+            <button class="tab">Vídeos</button>
+            <button class="tab">Check-ins</button>
+            <button class="tab">
+                Mais
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 10l5 5 5-5z"/>
+                </svg>
+            </button>
+            <button class="tab-menu">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal - Página de Amigos -->
+    <div class="friends-page">
+        <div class="friends-container">
+            <!-- Header da Página de Amigos -->
+            <div class="friends-header">
+                <div class="friends-title-section">
+                    <h2 class="friends-title">Amigos</h2>
+                    
+                    <!-- Barra de Pesquisa e Links -->
+                    <div class="friends-search-section">
+                        <div class="friends-search-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="search-icon">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                            <input type="text" placeholder="Procurar" class="friends-search-input">
+                        </div>
+                        
+                        <div class="friends-links">
+                            <a href="#" class="friends-link">Solicitações de amizade</a>
+                            <a href="#" class="friends-link">Encontre amigos</a>
+                        </div>
+                        
+                        <button class="friends-options-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros de Navegação -->
+            <div class="friends-filters">
+                <button class="filter-tab active">Todos os amigos</button>
+                <button class="filter-tab">Aniversários</button>
+                <button class="filter-tab">Cidade Atual</button>
+                <button class="filter-tab">Cidade natal</button>
+                <button class="filter-tab">Seguindo</button>
+            </div>
+
+            <!-- Seção de Aniversários (oculta por padrão) -->
+            <div class="birthdays-section" id="birthdays-section" style="display: none;">
+                <div class="birthday-card">
+                    <div class="birthday-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Bryan Júnio Vieira">
+                    </div>
+                    <div class="birthday-info">
+                        <h3 class="birthday-name">Eric Leonardo Carvalho</h3>
+                        <p class="birthday-message">Hoje é o aniversário dele</p>
+                    </div>
+                    <button class="birthday-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seção de Cidade Natal (oculta por padrão) -->
+            <div class="hometown-section" id="hometown-section" style="display: none;">
+                <div class="hometown-grid">
+                    <!-- Amigo 1 - Daniel Santos -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Daniel Santos">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Daniel Santos</h3>
+                            <p class="friend-mutual">13 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Amigo 2 - Dirla Santos II -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Dirla Santos II">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Amanda Pereira</h3>
+                            <p class="friend-mutual">13 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Amigo 3 - Claudineia Oliveira -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1489599806-1a0a4b3b0a0a?w=100&h=100&fit=crop&crop=face" alt="Claudineia Oliveira">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Claudineia Oliveira</h3>
+                            <p class="friend-mutual">8 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Amigo 4 - Cleidson Santos -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Cleidson Santos">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Cleidson Santos</h3>
+                            <p class="friend-mutual">12 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Amigo 5 - Valdileia Carvalho -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face" alt="Valdileia Carvalho">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Valdileia Carvalho</h3>
+                            <p class="friend-mutual">9 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Amigo 6 - Valdileiasilvalei Silva -->
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Valdileiasilvalei Silva">
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">Cleiton Silva</h3>
+                            <p class="friend-mutual">10 amigos em comum</p>
+                        </div>
+                        <button class="friend-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Seguindo (oculta por padrão) -->
+            <div class="following-section" id="following-section" style="display: none;">
+                <div class="following-grid">
+                    <!-- Página 1 - Grupo Whiteout -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon whiteout-icon">
+                                <span class="whiteout-w">W</span>
+                                <span class="whiteout-text">whiteout</span>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Grupo Whiteout</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 2 - Bling Story Brasil -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon bling-icon">
+                                <span class="bling-text">BLING</span>
+                                <span class="bling-story">•STORY•</span>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Bling Story Brasil</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 3 - Ei Nerd -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon nerd-icon">
+                                <div class="dice-icon">⚀⚁⚂</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Ei Nerd</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 4 - Duolingo Brasil -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon duolingo-icon">
+                                <div class="duolingo-owl">🦉</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Duolingo Brasil</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 5 - Key-Drop -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon keydrop-icon">
+                                <div class="gift-icon">🎁</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Key-Drop</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 6 - Assento de foguete -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon rocket-icon">
+                                <div class="rocket-symbol">🚀</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Assento de foguete</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 7 - Invento Na Hora -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon invento-icon">
+                                <div class="invento-face">😎</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Invento Na Hora</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Página 8 - Bkinho -->
+                    <div class="following-card">
+                        <div class="following-avatar">
+                            <div class="following-icon bkinho-icon">
+                                <div class="bkinho-character">😈</div>
+                            </div>
+                        </div>
+                        <div class="following-info">
+                            <h3 class="following-name">Bkinho</h3>
+                        </div>
+                        <button class="following-options">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Amigos -->
+            <div class="friends-grid" id="friends-grid">
+                <!-- Amigo 1 - Dirla Santos II -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Dirla Santos II">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Dirla Santos II</h3>
+                        <p class="friend-mutual">13 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 2 - Lidiane Alves de Souza -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1489599806-1a0a4b3b0a0a?w=100&h=100&fit=crop&crop=face" alt="Lidiane Alves de Souza">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Lidiane Alves de Souza</h3>
+                        <p class="friend-mutual">5 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 3 - Marcos Júnio -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Marcos Júnio">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Marcos Júnio</h3>
+                        <p class="friend-mutual">5 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 4 - Bryan Júnio -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Bryan Júnio">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Bryan Júnio</h3>
+                        <p class="friend-mutual">16 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 5 - Gleisson Ferreira -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Gleisson Ferreira">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Gleisson Ferreira</h3>
+                        <p class="friend-mutual">29 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 6 - Marilene Alves -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face" alt="Marilene Alves">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Marilene Alves</h3>
+                        <p class="friend-mutual">5 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 7 - Marcilene Alves -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Marcilene Alves">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Marcilene Alves</h3>
+                        <p class="friend-mutual">6 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Amigo 8 - Mônica Castro -->
+                <div class="friend-card">
+                    <div class="friend-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Mônica Castro">
+                    </div>
+                    <div class="friend-info">
+                        <h3 class="friend-name">Mônica Castro</h3>
+                        <p class="friend-mutual">11 amigos em comum</p>
+                    </div>
+                    <button class="friend-options">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para Interatividade -->
+    <script>
+        // Funcionalidade das tabs de filtro
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Controlar exibição das seções
+                const friendsGrid = document.getElementById('friends-grid');
+                const birthdaysSection = document.getElementById('birthdays-section');
+                const hometownSection = document.getElementById('hometown-section');
+                const followingSection = document.getElementById('following-section');
+                
+                // Esconder todas as seções primeiro
+                friendsGrid.style.display = 'none';
+                birthdaysSection.style.display = 'none';
+                hometownSection.style.display = 'none';
+                followingSection.style.display = 'none';
+                
+                // Mostrar a seção correspondente
+                if (this.textContent.trim() === 'Aniversários') {
+                    birthdaysSection.style.display = 'block';
+                } else if (this.textContent.trim() === 'Cidade natal') {
+                    hometownSection.style.display = 'block';
+                } else if (this.textContent.trim() === 'Seguindo') {
+                    followingSection.style.display = 'block';
+                } else {
+                    friendsGrid.style.display = 'grid';
+                }
+            });
+        });
+
+        // Funcionalidade dos botões de opções dos amigos
+        document.querySelectorAll('.friend-options').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Opções do amigo clicadas!');
+            });
+        });
+
+        // Funcionalidade da busca de amigos
+        const searchInput = document.querySelector('.friends-search-input');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const friendCards = document.querySelectorAll('.friend-card');
+            
+            friendCards.forEach(card => {
+                const friendName = card.querySelector('.friend-name').textContent.toLowerCase();
+                if (friendName.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Funcionalidade dos links de navegação
+        document.querySelectorAll('.friends-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const text = this.textContent;
+                alert(`${text} clicado!`);
+            });
+        });
+
+        // Funcionalidade do botão de opções principal
+        document.querySelector('.friends-options-btn').addEventListener('click', function() {
+            alert('Opções da página de amigos clicadas!');
+        });
+
+        // Funcionalidade do botão de opções do aniversário
+        document.querySelector('.birthday-options').addEventListener('click', function() {
+            alert('Opções do aniversário clicadas!');
+        });
+    </script>
+</body>
+</html>

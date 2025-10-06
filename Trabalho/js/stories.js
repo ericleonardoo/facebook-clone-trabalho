@@ -9,31 +9,14 @@ export function renderStories() {
   initialStories.forEach((story, index) => {
     const storyElement = document.createElement("div");
     storyElement.classList.add("story");
-    
-    // Criar avatar SVG baseado no nome do usuário
-    const avatarInitial = story.usuario.charAt(0).toUpperCase();
-    const avatarColor = getAvatarColor(story.usuario);
-    
     storyElement.innerHTML = `
       <img src="${story.imagem}" alt="${story.usuario}" />
-      <div class="story-avatar" style="background: ${avatarColor};">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" fill="${avatarColor}"/>
-          <text x="16" y="20" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">${avatarInitial}</text>
-        </svg>
-      </div>
       <p>${story.usuario}</p>
     `;
     storiesContainer.appendChild(storyElement);
 
     storyElement.addEventListener("click", () => abrirModalStory(index));
   });
-}
-
-function getAvatarColor(name) {
-  const colors = ['#FF6347', '#45BD62', '#1877f2', '#8B5CF6', '#F7B928', '#FF8C00', '#E91E63', '#00BCD4'];
-  const index = name.length % colors.length;
-  return colors[index];
 }
 
 function abrirModalStory(index) {
@@ -46,9 +29,23 @@ function abrirModalStory(index) {
       <img src="${initialStories[index].imagem}" alt="${initialStories[index].usuario}">
     </div>
   `;
+  // Acessibilidade: role dialog e aria-modal
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
   document.body.appendChild(modal);
+  
+  const closeBtn = document.getElementById("close-modal");
+  if (closeBtn) closeBtn.addEventListener("click", () => modal.remove());
 
-  document.getElementById("close-modal").addEventListener("click", () => modal.remove());
+  // Focar no modal e permitir fechar com Escape
+  modal.tabIndex = -1;
+  modal.focus();
+  document.addEventListener('keydown', function escListener(e) {
+    if (e.key === 'Escape') {
+      modal.remove();
+      document.removeEventListener('keydown', escListener);
+    }
+  });
 
   // Contador de stories vistos
   if (!storiesVistos.includes(index)) storiesVistos.push(index);

@@ -5,13 +5,7 @@ import { initTheme } from "./theme.js";
 import { initMenu } from "./menu.js";
 import { posts } from "./data.js";
 
-// Importar funções para atualizar nome do usuário
-import { atualizarNomeSidebar, atualizarComposer } from "./login.js";
-
-// Importar otimizações para mobile
-import { initMobileOptimizations } from "./mobile.js";
-
-function carregarMaisPosts() {
+export function carregarMaisPosts() {
   const novos = [
     { usuario: "Carlos Mendes", texto: "Esse projeto tá ficando bom demais 😎", curtidas: 0, comentarios: [] },
     { usuario: "Ana Paula", texto: "Alguém aí pra jogar mais tarde? 🎮", curtidas: 0, comentarios: [] }
@@ -27,48 +21,35 @@ document.addEventListener("DOMContentLoaded", () => {
   initLogin();
   initTheme();
   initMenu();
-  
-  // Inicializar otimizações para mobile
-  initMobileOptimizations();
-  
-  // Atualizar nome do usuário nas áreas específicas se já estiver logado
-  const savedUser = localStorage.getItem("usuario");
-  if (savedUser) {
-    atualizarNomeSidebar(savedUser);
-    atualizarComposer(savedUser);
-  }
 
-  // Botão publicar e funcionalidade Enter
+  // Botão publicar
   const btnPublicar = document.getElementById("btn-publicar");
   const inputPublicar = document.getElementById("novo-post-texto");
 
-  function publicarPost() {
-    const usuario = localStorage.getItem("usuario") || "Usuário Anônimo";
-    const texto = inputPublicar.value.trim();
-    if (!texto) {
-      alert("Digite algo antes de publicar!");
-      return;
-    }
-    createPost(usuario, texto);
-    inputPublicar.value = "";
-  }
-
   if (btnPublicar && inputPublicar) {
-    // Botão publicar
-    btnPublicar.addEventListener("click", publicarPost);
-    
-    // Tecla Enter
-    inputPublicar.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        publicarPost();
-      }
+    btnPublicar.addEventListener("click", () => {
+      const usuario = localStorage.getItem("usuario") || "Usuário Anônimo";
+      const texto = inputPublicar.value.trim();
+      if (!texto) return alert("Digite algo antes de publicar!");
+      createPost(usuario, texto);
+      inputPublicar.value = "";
     });
   }
 
-  // Scroll infinito
-  window.addEventListener("scroll", () => {
+  // Scroll infinito com debounce
+  function debounce(fn, wait) {
+    let t;
+    return function(...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  const handleScroll = debounce(() => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
       carregarMaisPosts();
     }
-  });
+  }, 150);
+
+  window.addEventListener("scroll", handleScroll);
 });

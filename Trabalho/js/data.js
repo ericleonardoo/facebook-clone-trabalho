@@ -25,20 +25,7 @@ export const posts = [
 
 // Mock de stories
 export const stories = [
-  { 
-    usuario: "Roberta Morato Lobato", 
-    imagem: "img/post1.jpeg"
-  },
-  { 
-    usuario: "Vulgo Tralha", 
-    imagem: "img/post2.jpeg"
-  },
-  { 
-    usuario: "Marcos Júnio", 
-    imagem: "img/post3.jpeg"
-  },
-  { 
-    usuario: "Bryan Júnio Vieira", 
-    imagem: "img/post1.jpeg"
-  }
+  { usuario: "Pedro", imagem: "img/post1.jpeg" },
+  { usuario: "Carla", imagem: "img/post2.jpeg" },
+  { usuario: "Lucas", imagem: "img/post3.jpeg" }
 ];

@@ -23,6 +23,8 @@ export function initMenu() {
       menu.classList.toggle("aberto");
       const isOpen = menu.classList.contains("aberto");
       menu.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      // marcar estado acessível no botão
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       
       // Atualizar saudação quando abrir o menu
       if (isOpen) {
@@ -37,7 +39,17 @@ export function initMenu() {
       if (!menu.contains(e.target) && !toggle.contains(e.target)) {
         menu.classList.remove("aberto");
         menu.setAttribute("aria-hidden", "true");
+        toggle.setAttribute('aria-expanded', 'false');
       }
+    }
+  });
+
+  // Fechar menu com a tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && menu.classList.contains('aberto')) {
+      menu.classList.remove('aberto');
+      menu.setAttribute('aria-hidden', 'true');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
     }
   });
 

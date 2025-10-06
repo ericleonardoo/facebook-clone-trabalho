@@ -19,7 +19,7 @@ export function renderPosts() {
     postElement.innerHTML = `
       <h3>${post.usuario}</h3>
       <p>${post.texto}</p>
-      ${post.imagem ? `<img src="${post.imagem}" alt="Imagem do post" onclick="abrirModalImagem('${post.imagem}')">` : ""}
+      ${post.imagem ? `<img src="${post.imagem}" alt="Imagem do post" loading="lazy" onclick="abrirModalImagem('${post.imagem}')">` : ""}
       
       <div class="acoes">
         <button onclick="curtir(${index})"><i class="fi fi-sr-thumbs-up"></i></button>

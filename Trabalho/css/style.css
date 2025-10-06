@@ -5,10 +5,29 @@
   box-sizing: border-box;
 }
 
+/* Scrollbar neutro (Webkit + Firefox) para evitar trilhos/brancos fortes em dark mode */
+:root {
+  --scroll-track: #f1f1f1;
+  --scroll-thumb: #c4c4c4;
+}
+*::-webkit-scrollbar { width: 12px; height: 12px; }
+*::-webkit-scrollbar-track { background: var(--scroll-track); border-radius: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; border: 3px solid transparent; background-clip: padding-box; }
+html { scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
+
+/* Imagens e vídeos sempre fluidos */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #f0f2f5;
   color: #333;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  overflow-x: hidden;
 }
 
 body.dark {
@@ -18,6 +37,67 @@ body.dark {
 body.dark .post {
   background: #242526;
 }
+
+/* Garantir que blocos de UI fiquem escuros em modo dark para evitar manchas/brancos indesejados */
+body.dark .stories-block,
+body.dark .card,
+body.dark .composer,
+body.dark .story-card,
+body.dark .story-card--add,
+body.dark .post-form-card,
+body.dark .post-card,
+body.dark .sidebar-card {
+  background: #242526;
+  border-color: #3a3b3c;
+  color: #e4e6eb;
+}
+
+body.dark .story-card__thumb,
+body.dark .story-card--add .story-card__thumb,
+body.dark .story img {
+  filter: brightness(0.9);
+}
+
+/* Menu e hambúrguer escuros */
+body.dark .menu,
+body.dark .hamburger {
+  background: #242526;
+  border-color: #3e4042;
+}
+
+/* Sidebar escura */
+body.dark .fb-left,
+body.dark .fb-right,
+body.dark .contacts-section {
+  background: transparent;
+}
+
+/* Ajustar cores do scrollbar no modo escuro */
+body.dark {
+  --scroll-track: #212223;
+  --scroll-thumb: #4a4a4a;
+}
+
+/* Forçar uso de backgrounds neutros que respeitam modo escuro: */
+.stories-block,
+.card,
+.composer,
+.story-card,
+.story-card--add,
+.post-form-card,
+.post-card,
+.sidebar-card,
+.contacts-section { background: #fff; }
+
+body.dark .stories-block,
+body.dark .card,
+body.dark .composer,
+body.dark .story-card,
+body.dark .story-card--add,
+body.dark .post-form-card,
+body.dark .post-card,
+body.dark .sidebar-card,
+body.dark .contacts-section { background: #242526; border-color: #3a3b3c; }
 
 
 
@@ -105,8 +185,8 @@ a {
 .hamburger { 
   position: fixed; 
   top: 56px; 
-  right: 16px; 
-  width: 220px; 
+  right: 2vw; 
+  width: clamp(180px, 28vw, 220px); 
   background: #fff; 
   border: 1px solid #e4e6eb; 
   border-radius: 10px; 
@@ -116,7 +196,7 @@ a {
   z-index: 60; 
   opacity: 0;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .hamburger.aberto { 
   display: block; 
@@ -139,14 +219,14 @@ a {
 
 /* Menu lateral */
 .menu {
-  width: 200px;
+  width: 220px;
   background: white;
   padding: 10px;
   border-right: 1px solid #ddd;
   position: fixed;
   top: 0;
-  left: -220px; /* escondido à esquerda */
-  height: 100%;
+  left: -240px; /* escondido à esquerda */
+  height: 100vh;
   transition: left 0.3s ease;
   z-index: 1000;
 }
@@ -170,164 +250,55 @@ a {
   padding: 10px;
 }
 
+/* Removida regra problemática que forçava max-width em containers principais.
+   Mantemos controles finos por elemento para evitar barras/overflow indesejados. */
+.conteudo { box-sizing: border-box; }
+.fb-shell { box-sizing: border-box; width: 100%; padding-left: 2vw; padding-right: 2vw; }
+.menu { box-sizing: border-box; }
+.topbar { box-sizing: border-box; }
+
+/* Altura mínima para elementos de toque em mobile */
+button, .topbar__icon, .topbar__mini, .hamburger__item {
+  min-height: 44px;
+}
+
+/* Botões responsivos e acessíveis */
+button, .btn, .fb-button, .post-form-button {
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  line-height: 1;
+}
+
+input[type="text"], input[type="search"], textarea {
+  font-size: clamp(0.95rem, 1.8vw, 1rem);
+}
+
 /* Stories */
-.stories-block { 
-  background: #fff; 
-  border: 1px solid #e4e6eb; 
-  border-radius: 10px; 
-  padding: 12px; 
-  margin-bottom: 16px; 
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
+.stories-block { background: #fff; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+.stories-header { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px; }
+.stories-header h3 { font-size: 18px; color: #1c1e21; }
+.stories-header .see-all { color: #1877f2; text-decoration: none; font-weight: 600; }
 
-.stories-row { 
-  display: flex; 
-  gap: 12px; 
-  overflow-x: auto; 
-  padding-bottom: 6px;
-}
+.stories-row { display: flex; gap: 12px; overflow: hidden; }
+.stories { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+.stories::-webkit-scrollbar { height: 8px; }
+.stories::-webkit-scrollbar-thumb { background: #ccd0d5; border-radius: 8px; }
 
-.stories-row::-webkit-scrollbar { 
-  height: 8px; 
-}
+.story-card { position: relative; width: 112px; height: 198px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #f0f2f5; flex: 0 0 auto; }
+.story-card__thumb { width: 100%; height: 100%; background: #e5e7eb center/cover no-repeat; }
+.story-card__name { position: absolute; left: 8px; bottom: 8px; right: 8px; color: #fff; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); font-size: 14px; }
+.story-card:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
 
-.stories-row::-webkit-scrollbar-thumb { 
-  background: #ccd0d5; 
-  border-radius: 8px; 
-}
-
-.stories { 
-  display: flex; 
-  gap: 12px; 
-  overflow-x: auto; 
-  padding-bottom: 6px; 
-}
-
-.stories::-webkit-scrollbar { 
-  height: 8px; 
-}
-
-.stories::-webkit-scrollbar-thumb { 
-  background: #ccd0d5; 
-  border-radius: 8px; 
-}
-
-.story-card { 
-  position: relative; 
-  width: 112px; 
-  height: 198px; 
-  border-radius: 12px; 
-  overflow: hidden; 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
-  background: #f0f2f5; 
-  flex: 0 0 auto; 
-  cursor: pointer;
-}
-
-.story-card__thumb { 
-  width: 100%; 
-  height: 100%; 
-  background: #e5e7eb center/cover no-repeat; 
-}
-
-.story-card__name { 
-  position: absolute; 
-  left: 8px; 
-  bottom: 8px; 
-  right: 8px; 
-  color: #fff; 
-  font-weight: 700; 
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6); 
-  font-size: 14px; 
-  line-height: 1.2;
-}
-
-.story-card:hover { 
-  transform: translateY(-2px); 
-  transition: transform 0.2s ease; 
-}
-
-.story-card--add { 
-  background: #fff; 
-  border: 1px solid #e4e6eb; 
-}
-
-.story-card--add .story-card__thumb { 
-  filter: brightness(0.9); 
-}
-
-.story-card__add-icon { 
-  position: absolute; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  bottom: 44px; 
-  width: 36px; 
-  height: 36px; 
-  border-radius: 50%; 
-  background: #1877f2; 
-  border: 3px solid #fff; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  cursor: pointer; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.story-card__add-icon:hover {
-  background: #166fe5;
-}
+.story-card--add { background: #fff; border: 1px solid #e4e6eb; }
+.story-card--add .story-card__thumb { filter: brightness(0.9); }
+.story-card__add { position: absolute; left: 50%; transform: translateX(-50%); bottom: 44px; width: 36px; height: 36px; border-radius: 50%; background: #1877f2; color: #fff; border: 3px solid #fff; font-size: 22px; line-height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 
 /* Avatares e anel de story (para itens renderizados via JS) */
-.story { 
-  position: relative; 
-  width: 112px; 
-  height: 198px; 
-  border-radius: 12px; 
-  overflow: hidden; 
-  background: #000; 
-  flex: 0 0 auto; 
-  cursor: pointer;
-}
-
-.story img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  border-radius: 12px; 
-}
-
-.story-avatar {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 3px solid #1877f2;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.story-avatar svg {
-  width: 100%;
-  height: 100%;
-}
-
-.story p { 
-  position: absolute; 
-  left: 8px; 
-  bottom: 8px; 
-  right: 8px; 
-  color: #fff; 
-  font-weight: 700; 
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6); 
-  font-size: 14px; 
-  line-height: 1.2;
-}
+.story { position: relative; width: 112px; height: 198px; border-radius: 12px; overflow: hidden; background: #000; flex: 0 0 auto; }
+.story img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.story::before { content: ""; position: absolute; top: 8px; left: 8px; width: 36px; height: 36px; border-radius: 50%; border: 3px solid #1877f2; background: #fff center/cover no-repeat; z-index: 2; }
+.story p { position: absolute; left: 8px; bottom: 8px; right: 8px; color: #fff; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); font-size: 14px; }
 
 /* Garantir layout horizontal e dimensões dentro da lista de stories */
 .stories .story { width: 112px; height: 198px; }
@@ -343,11 +314,11 @@ a {
 /* Shell 3 colunas */
 .fb-shell { 
   max-width: 1200px; 
-  margin: 16px auto; 
+  margin: 1.5rem auto; 
   display: grid; 
   grid-template-columns: 1fr minmax(0,680px) 350px; 
-  gap: 40px; 
-  padding-left: 40px; 
+  gap: clamp(1rem, 2vw, 40px); 
+  padding-inline: clamp(1rem, 2.5vw, 40px);
 }
 
 /* Sidebar esquerda - Estilo Facebook */
@@ -606,7 +577,7 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
   z-index: 50;
 }
 
@@ -620,136 +591,9 @@ a {
 .contacts { list-style: none; display: grid; gap: 8px; }
 
 /* Composer */
-.composer { 
-  background: #fff; 
-  margin-bottom: 12px; 
-  border: 1px solid #e4e6eb; 
-  border-radius: 10px; 
-  padding: 12px; 
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
-
-.composer-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.composer-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.composer-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.composer-input {
-  flex: 1;
-  background: #f0f2f5;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 14px;
-  font-size: 15px;
-  color: #65676b;
-  outline: none;
-  transition: background-color 0.2s ease;
-}
-
-.composer-input:hover {
-  background: #e4e6eb;
-}
-
-.composer-input:focus {
-  background: #fff;
-  border: 1px solid #1877f2;
-}
-
-.composer-publish-btn {
-  background: #1877f2;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  flex-shrink: 0;
-}
-
-.composer-publish-btn:hover {
-  background: #166fe5;
-}
-
-.composer-publish-btn:disabled {
-  background: #e4e6eb;
-  color: #65676b;
-  cursor: not-allowed;
-}
-
-.composer-separator {
-  height: 1px;
-  background: #e4e6eb;
-  margin: 8px 0;
-}
-
-.composer-actions {
-  display: flex;
-  justify-content: space-around;
-  gap: 8px;
-}
-
-.composer-action-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  flex: 1;
-  justify-content: center;
-}
-
-.composer-action-btn:hover {
-  background: #f0f2f5;
-}
-
-.composer-action-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.composer-action-btn span {
-  font-size: 15px;
-  font-weight: 600;
-  color: #65676b;
-}
-
-.live-video-icon svg circle {
-  fill: #F02849;
-}
-
-.photo-video-icon svg path {
-  fill: #45BD62;
-}
-
-.feeling-activity-icon svg path {
-  fill: #F7B928;
-}
+.composer { background: #fff; margin-bottom: 12px; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; display: flex; gap: 8px; }
+.composer input { flex: 1; background: #f0f2f5; border: none; border-radius: 20px; padding: 10px 14px; }
+.composer button { background: #1877f2; color: #fff; border: none; border-radius: 20px; padding: 10px 16px; cursor: pointer; }
 
 /* =============================
    Login Facebook-like (estático)
@@ -812,7 +656,7 @@ a {
 }
 .fb-input:focus { border-color: #0866ff; box-shadow: 0 0 0 2px rgba(8,102,255,0.15); }
 
-.fb-button { height: 48px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.fb-button { height: 48px; border: none; display: flex; text-align: center; align-items: center; justify-content: center; border-radius: 6px; font-weight: 700; cursor: pointer; }
 .fb-button--primary { background: #1877f2; color: #fff; font-size: 20px; }
 .fb-button--secondary { background: #42b72a; color: #fff; font-size: 17px; width: 60%; margin: 0 auto; }
 
@@ -1205,7 +1049,7 @@ body.dark .fb-separator::after { background: #3e4042; }
 .post {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.5s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .post.mostrar {
@@ -1282,613 +1126,101 @@ body.dark .fb-separator::after { background: #3e4042; }
 }
 
 
-/* ========================================
-   RESPONSIVIDADE COMPLETA E DE ALTA QUALIDADE
-   ======================================== */
-
-/* Breakpoints otimizados */
-/* Mobile First Approach */
-
-/* ===== DISPOSITIVOS MUITO PEQUENOS (320px - 480px) ===== */
-@media (max-width: 480px) {
-  /* Topbar para telas muito pequenas */
-  .topbar {
-    padding: 6px 8px;
-    flex-wrap: wrap;
-    gap: 8px;
+/* Responsivo para celular */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
 
-  .topbar__left {
-    flex: 1;
-    min-width: 0;
-  }
+  .fb-shell { grid-template-columns: 1fr; gap: 16px; padding: 0 8px; }
+  .topbar__search { width: 160px; }
 
-  .topbar__logo {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-  }
+  .fb-login__container { grid-template-columns: 1fr; gap: 24px; }
+  .fb-logo { font-size: 40px; }
+  .fb-tagline { font-size: 18px; }
 
-  .topbar__search {
+  .menu {
+    position: absolute;
+    top: 50px; /* abaixo da topbar */
+    left: 0;
     width: 100%;
-    max-width: 200px;
-    padding: 8px 12px;
-    font-size: 14px;
+    height: calc(100% - 50px);
+    z-index: 100;
+    border-right: none;
+    border-top: 1px solid #ddd;
   }
 
-  .topbar__center {
-    display: none; /* Ocultar navegação central em telas muito pequenas */
+  .conteudo {
+    padding: 5px;
   }
 
-  .topbar__right {
-    gap: 4px;
+  .stories {
+    overflow-x: auto;
   }
 
-  .topbar__mini {
-    width: 32px;
-    height: 32px;
-  }
-
-  /* Layout principal */
-  .fb-shell {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 0 8px;
-    margin: 8px auto;
-  }
-
-  /* Sidebar esquerda - oculta em mobile */
-  .fb-left {
-    display: none;
-  }
-
-  /* Sidebar direita - oculta em mobile */
-  .fb-right {
-    display: none;
-  }
-
-  /* Composer otimizado para mobile */
-  .composer {
-    padding: 8px;
-    margin-bottom: 8px;
-  }
-
-  .composer-header {
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
-  .composer-avatar {
-    width: 32px;
-    height: 32px;
-  }
-
-  .composer-input {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-
-  .composer-publish-btn {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-
-  .composer-actions {
-    gap: 4px;
-  }
-
-  .composer-action-btn {
-    padding: 6px 8px;
-    font-size: 13px;
-  }
-
-  .composer-action-btn span {
-    font-size: 13px;
-  }
-
-  /* Stories otimizados para mobile */
-  .stories-block {
-    padding: 8px;
-    margin-bottom: 12px;
-  }
-
-  .stories-row {
-    gap: 8px;
-  }
-
-  .story-card,
   .story {
-    width: 90px;
-    height: 160px;
-  }
-
-  .story-card__name,
-  .story p {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
-
-  .story-card__add-icon {
-    width: 28px;
-    height: 28px;
-    bottom: 36px;
-  }
-
-  .story-avatar {
-    width: 28px;
-    height: 28px;
-    top: 6px;
-    left: 6px;
-  }
-
-  /* Posts otimizados para mobile */
-  .post {
-    margin-bottom: 12px;
-  }
-
-  .post-header {
-    padding: 8px 12px;
-  }
-
-  .post-avatar {
-    width: 32px;
-    height: 32px;
-  }
-
-  .post-name {
-    font-size: 14px;
-  }
-
-  .post-meta {
-    font-size: 11px;
-  }
-
-  .follow-btn {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .post-content {
-    padding: 0 12px 8px 12px;
-  }
-
-  .post-text {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
-  .post-image {
-    border-radius: 6px;
-  }
-
-  .post-stats {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-
-  .post-buttons {
-    padding: 6px 12px;
-  }
-
-  .post-btn {
-    padding: 6px 8px;
-    font-size: 13px;
-  }
-
-  .post-btn i {
-    font-size: 14px;
-  }
-
-  .post-btn span {
-    font-size: 13px;
-  }
-
-  /* Menu hambúrguer otimizado */
-  .hamburger {
-    top: 48px;
-    right: 8px;
-    width: 200px;
-    padding: 6px;
-  }
-
-  .hamburger__greeting {
-    padding: 8px 6px 6px 6px;
-    font-size: 14px;
-  }
-
-  .hamburger__item {
-    padding: 8px 10px;
-    font-size: 14px;
-  }
-}
-
-/* ===== DISPOSITIVOS MÓVEIS (481px - 768px) ===== */
-@media (min-width: 481px) and (max-width: 768px) {
-  /* Topbar para tablets pequenos */
-  .topbar {
-    padding: 8px 12px;
-  }
-
-  .topbar__search {
-    width: 180px;
-  }
-
-  .topbar__center {
-    gap: 12px;
-    margin-right: 5vw;
-  }
-
-  .topbar__icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* Layout principal */
-  .fb-shell {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0 12px;
-    margin: 12px auto;
-  }
-
-  /* Sidebar esquerda - oculta */
-  .fb-left {
-    display: none;
-  }
-
-  /* Sidebar direita - oculta */
-  .fb-right {
-    display: none;
-  }
-
-  /* Composer */
-  .composer {
-    padding: 10px;
-  }
-
-  .composer-header {
-    gap: 10px;
-  }
-
-  .composer-avatar {
-    width: 36px;
-    height: 36px;
-  }
-
-  .composer-input {
-    padding: 9px 13px;
-  }
-
-  /* Stories */
-  .stories-block {
-    padding: 10px;
-  }
-
-  .stories-row {
-    gap: 10px;
-  }
-
-  .story-card,
-  .story {
-    width: 100px;
-    height: 180px;
-  }
-
-  /* Posts */
-  .post-header {
-    padding: 10px 14px;
-  }
-
-  .post-avatar {
-    width: 36px;
-    height: 36px;
-  }
-
-  .post-content {
-    padding: 0 14px 10px 14px;
-  }
-
-  .post-stats {
-    padding: 8px 14px;
-  }
-
-  .post-buttons {
-    padding: 8px 14px;
-  }
-}
-
-/* ===== TABLETS (769px - 1024px) ===== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  /* Topbar para tablets */
-  .topbar {
-    padding: 8px 16px;
-  }
-
-  .topbar__search {
-    width: 220px;
-  }
-
-  .topbar__center {
-    margin-right: 8vw;
-  }
-
-  /* Layout principal - 2 colunas */
-  .fb-shell {
-    grid-template-columns: 1fr minmax(0, 500px);
-    gap: 20px;
-    padding: 0 16px;
-    margin: 16px auto;
-  }
-
-  /* Sidebar esquerda - oculta */
-  .fb-left {
-    display: none;
-  }
-
-  /* Sidebar direita - oculta */
-  .fb-right {
-    display: none;
-  }
-
-  /* Stories */
-  .story-card,
-  .story {
-    width: 110px;
-    height: 195px;
-  }
-
-  /* Posts */
-  .post-header {
-    padding: 12px 16px;
-  }
-
-  .post-content {
-    padding: 0 16px 12px 16px;
-  }
-
-  .post-stats {
-    padding: 8px 16px;
-  }
-
-  .post-buttons {
-    padding: 8px 16px;
-  }
-}
-
-/* ===== DESKTOP PEQUENO (1025px - 1200px) ===== */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  /* Layout principal - 3 colunas compactas */
-  .fb-shell {
-    grid-template-columns: 200px minmax(0, 500px) 280px;
-    gap: 24px;
-    padding: 0 20px;
-  }
-
-  /* Sidebar esquerda compacta */
-  .fb-left {
-    width: 200px;
-    padding: 12px 8px;
-  }
-
-  .sidebar-link {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-
-  .sidebar-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
-
-  /* Sidebar direita compacta */
-  .fb-right {
-    width: 280px;
-  }
-
-  .contacts-header {
-    padding: 12px 16px 16px 16px;
-  }
-
-  .contacts-list {
-    padding: 0 16px 16px 16px;
-  }
-
-  .contact-item {
-    padding: 10px 0;
-  }
-}
-
-/* ===== DESKTOP GRANDE (1201px+) ===== */
-@media (min-width: 1201px) {
-  /* Layout principal - 3 colunas completas */
-  .fb-shell {
-    grid-template-columns: 240px minmax(0, 680px) 350px;
-    gap: 40px;
-    padding: 0 40px;
-  }
-
-  /* Sidebar esquerda completa */
-  .fb-left {
-    width: 240px;
-    padding: 16px 12px;
-  }
-
-  /* Sidebar direita completa */
-  .fb-right {
-    width: 350px;
-  }
-}
-
-/* ===== ORIENTAÇÃO LANDSCAPE EM MOBILE ===== */
-@media (max-width: 768px) and (orientation: landscape) {
-  .topbar {
-    padding: 4px 8px;
-  }
-
-  .topbar__logo {
-    width: 28px;
-    height: 28px;
-    font-size: 18px;
-  }
-
-  .topbar__search {
-    width: 150px;
-    padding: 6px 10px;
-  }
-
-  .fb-shell {
-    margin: 4px auto;
-  }
-
-  .composer {
-    padding: 6px;
-    margin-bottom: 6px;
-  }
-
-  .composer-header {
-    margin-bottom: 4px;
-  }
-
-  .stories-block {
-    padding: 6px;
-    margin-bottom: 8px;
-  }
-
-  .story-card,
-  .story {
+    flex: 0 0 auto;
     width: 80px;
-    height: 140px;
-  }
-
-  .post {
-    margin-bottom: 8px;
-  }
-
-  .post-header {
-    padding: 6px 10px;
-  }
-
-  .post-content {
-    padding: 0 10px 6px 10px;
-  }
-
-  .post-stats {
-    padding: 4px 10px;
-  }
-
-  .post-buttons {
-    padding: 4px 10px;
   }
 }
 
-/* ===== OTIMIZAÇÕES PARA TOUCH ===== */
-@media (hover: none) and (pointer: coarse) {
-  /* Aumentar área de toque para dispositivos touch */
-  .topbar__icon,
-  .topbar__mini {
-    min-width: 44px;
-    min-height: 44px;
-  }
-
-  .composer-action-btn,
-  .post-btn,
-  .follow-btn {
-    min-height: 44px;
-    padding: 12px 16px;
-  }
-
-  .story-card,
-  .story {
-    cursor: pointer;
-  }
-
-  /* Remover hover effects em dispositivos touch */
-  .topbar__icon:hover,
-  .topbar__mini:hover,
-  .composer-action-btn:hover,
-  .post-btn:hover,
-  .follow-btn:hover {
-    background: initial;
-  }
-
-  /* Adicionar feedback visual para touch */
-  .topbar__icon:active,
-  .topbar__mini:active,
-  .composer-action-btn:active,
-  .post-btn:active,
-  .follow-btn:active {
-    background: #f0f2f5;
-    transform: scale(0.95);
-  }
-}
-
-/* ===== OTIMIZAÇÕES DE PERFORMANCE ===== */
+/* Aperfeiçoamentos específicos para mobile (<=768px) */
 @media (max-width: 768px) {
-  /* Reduzir animações em dispositivos móveis para melhor performance */
-  .post {
-    transition: none;
-  }
-
-  .post:hover {
-    transform: none;
-  }
-
-  .post-image:hover {
-    transform: none;
-  }
-
-  .story-card:hover {
-    transform: none;
-  }
-
-  /* Otimizar scrollbars */
-  .stories-row::-webkit-scrollbar,
-  .stories::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .stories-row::-webkit-scrollbar-thumb,
-  .stories::-webkit-scrollbar-thumb {
-    background: #ccd0d5;
-    border-radius: 4px;
-  }
+  .topbar__center { display: none; } /* Esconder ícones centrais para economizar espaço */
+  .topbar__left { gap: 8px; }
+  .topbar__logo { font-size: clamp(1.2rem, 6vw, 1.6rem); }
+  .fb-left { display: none; } /* Esconder sidebar esquerda em telas pequenas */
+  .fb-right { display: none; }
+  .hamburger { right: 4vw; top: 56px; }
+  .feed { padding: 0 4vw; }
+  .post { margin-bottom: 16px; }
+  .post > img { max-height: 45vh; }
 }
 
-/* ===== ACESSIBILIDADE ===== */
-@media (prefers-reduced-motion: reduce) {
-  /* Reduzir animações para usuários que preferem menos movimento */
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+@media (max-width: 480px) {
+  /* Celulares retrato: reduzir paddings, tornar tudo 1 coluna e garantir legibilidade */
+  .topbar { padding: 0.4rem 3vw; }
+  .topbar__mini, .topbar__icon { width: 36px; height: 36px; }
+  .topbar__search { width: 80px; }
+  .stories .story { width: 72px; height: 140px; }
+  .story-card { width: 72px; height: 140px; }
+  .floating-edit-btn { width: 44px; height: 44px; }
+  .post .acoes { grid-template-columns: 1fr 1fr; }
+  .post .acoes span { display: block; }
+  button, .btn { padding: 10px 12px; }
 }
 
-/* ===== DARK MODE RESPONSIVO ===== */
-@media (max-width: 768px) {
-  body.dark .topbar {
-    background: #242526;
-    border-bottom-color: #3e4042;
-  }
+/* Estilo reutilizável para o botão 'Voltar' (antes em voltar.html inline) */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 7vh;
+  min-height: 44px;
+  background-color: #1877f2; /* azul padrão */
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
 
-  body.dark .composer {
-    background: #242526;
-    border-color: #3e4042;
-  }
+/* Breakpoint para tablets (e telas até 1024px) */
+@media (max-width: 1024px) {
+  /* Grid principal vira duas colunas: esquerda + conteúdo principal */
+  .fb-shell { grid-template-columns: 1fr minmax(0, 720px); gap: 16px; padding: 0 12px; }
 
-  body.dark .stories-block {
-    background: #242526;
-    border-color: #3e4042;
-  }
+  /* Sidebars mais finas e responsivas */
+  .fb-left { width: clamp(140px, 18vw, 200px); padding: 12px; }
+  .fb-right { display: none; } /* Esconde o painel direito em telas menores para priorizar conteúdo */
 
-  body.dark .post {
-    background: #242526;
-    border-color: #3e4042;
-  }
+  /* Ajustes de topbar */
+  .topbar__center { gap: 8px; }
+  .topbar__search { width: clamp(140px, 24vw, 220px); }
 
-  body.dark .hamburger {
-    background: #242526;
-    border-color: #3e4042;
-  }
+  /* Ajuste de imagens/posts para não exceder altura visual */
+  .post > img { max-height: 40vh; }
+
+  /* Comentário: tablet prioriza conteúdo central, reduz espaço lateral e oculta painel secundário. */
 }
