@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Facebook - Início</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/facebook-profile.css">
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/uicons@3.0.0/css/uicons.min.css" rel="stylesheet"><!-- Flaticon UIcons CDN -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+  <link rel="manifest" href="manifest.json">
   
 </head>
 <body>
@@ -27,7 +29,8 @@
     </nav>
     <div class="topbar__right">
       <a class="topbar__mini" href="messenger.html" aria-label="Messenger"><i class="fi fi-sr-messages"></i></a>
-      <a class="topbar__mini" href="notificacoes.html" aria-label="Notificações"><i class="fi fi-sr-bell"></i></a>
+      <a class="topbar__mini" href="messenger.html" aria-label="Messenger"><i class="fi fi-sr-bell"></i></a>
+      
       <a class="topbar__mini" id="toggle-menu" href="#" aria-label="Menu"><i class="fi fi-sr-menu-burger"></i></a>
     </div>
   </header>
@@ -41,7 +44,7 @@
       <h3 class="hamburger__title">Menu</h3>
       <ul class="hamburger__menu">
         <li class="hamburger__item">
-          <a href="perfil.html" class="hamburger__link">
+          <a href="perfil/indexprofile.html" class="hamburger__link">
             <div class="hamburger__icon profile-icon">
               <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRjYzNDciLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0iI0ZGRiIvLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDx0ZXh0IHg9IjIwIiB5PSIzNSIgZmlsbD0iI0ZGRiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5FPC90ZXh0Pgo8L3N2Zz4K" alt="Eric Leonardo Carvalho">
             </div>
@@ -251,8 +254,14 @@
 
     <!-- Botões de ação -->
     <div class="hamburger__actions">
-      <button id="dark-toggle" class="hamburger__action-button">🌙 Dark Mode</button>
-      <button id="btn-logout" class="hamburger__action-button">🚪 Sair</button>
+      <button id="dark-toggle" class="hamburger__action-button">
+        <span class="hamburger__action-icon">🌙</span>
+        <span class="hamburger__action-text">Dark Mode</span>
+      </button>
+      <button id="btn-logout" class="hamburger__action-button">
+        <span class="hamburger__action-icon">🚪</span>
+        <span class="hamburger__action-text">Sair</span>
+      </button>
     </div>
   </div>
 
@@ -264,7 +273,7 @@
       <div class="sidebar-section">
         <ul class="sidebar-menu">
           <li class="sidebar-item">
-            <a href="perfil.html" class="sidebar-link">
+            <a href="perfil/indexprofile.html" class="sidebar-link">
               <div class="sidebar-icon profile-icon">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRjYzNDciLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0iI0ZGRiIvLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDx0ZXh0IHg9IjIwIiB5PSIzNSIgZmlsbD0iI0ZGRiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5FPC90ZXh0Pgo8L3N2Zz4K" alt="Eric Leonardo Carvalho">
               </div>
@@ -552,6 +561,19 @@
   </div>
 
   <script type="module" src="js/main.js"></script>
+  <script src="theme.js"></script>
+  <script src="js/notifications.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/pwabuilder-sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function(error) {
+          console.log('Erro ao registrar Service Worker:', error);
+        });
+    }
+  </script>
 </body>
 </html>
 

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <base href="/perfil/">
+    <link rel="manifest" href="../manifest.json">
 </head>
 <body>
     <!-- Barra de Navegação Superior -->
@@ -25,27 +26,27 @@
                 </div>
             <!-- Menu Central -->
             <div class="navbar-center">
-                <button class="nav-icon">
+                <button class="nav-icon mobile-hide">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                     </svg>
                 </button>
-                <button class="nav-icon">
+                <button class="nav-icon mobile-hide">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 14.5V22h2.5v-6H6v6h2v-6h2v6h2v-6h2v6h2z"/>
                     </svg>
                 </button>
-                <button class="nav-icon">
+                <button class="nav-icon mobile-hide">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
                 </button>
-                <button class="nav-icon">
+                <button class="nav-icon mobile-hide">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
                 </button>
-                <button class="nav-icon">
+                <button class="nav-icon mobile-hide">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
@@ -664,5 +665,16 @@
             alert('Opções do aniversário clicadas!');
         });
     </script>
+    <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/pwabuilder-sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function(error) {
+          console.log('Erro ao registrar Service Worker:', error);
+        });
+    }
+  </script>
 </body>
 </html>

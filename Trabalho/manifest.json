@@ -1,0 +1,28 @@
+{
+  "id": "facebook-clone",
+  "name": "Book do Face",
+  "short_name": "bookdoface",
+  "description": "Clone do Facebook desenvolvido com HTML, CSS e JavaScript, focado em reproduzir a interface e a experiência do usuário da plataforma original. O projeto conta com layout responsivo, sistema de stories, cards interativos e alternância de tema claro/escuro, demonstrando domínio de front-end e boas práticas de desenvolvimento web.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#1877f2",
+  "categories": [
+    "social",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

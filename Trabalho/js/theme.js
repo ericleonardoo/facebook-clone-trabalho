@@ -20,3 +20,6 @@ export function initTheme() {
     btn.innerText = "☀️ Light Mode";
   }
 }
+
+initTheme();
+

@@ -21,6 +21,7 @@ export function initMenu() {
     toggle.addEventListener("click", (e) => {
       e.preventDefault();
       menu.classList.toggle("aberto");
+      menu.classList.toggle("active");
       const isOpen = menu.classList.contains("aberto");
       menu.setAttribute("aria-hidden", isOpen ? "false" : "true");
       // marcar estado acessível no botão
@@ -38,6 +39,7 @@ export function initMenu() {
     if (menu && menu.classList.contains("aberto")) {
       if (!menu.contains(e.target) && !toggle.contains(e.target)) {
         menu.classList.remove("aberto");
+        menu.classList.remove("active");
         menu.setAttribute("aria-hidden", "true");
         toggle.setAttribute('aria-expanded', 'false');
       }
@@ -48,6 +50,7 @@ export function initMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu && menu.classList.contains('aberto')) {
       menu.classList.remove('aberto');
+      menu.classList.remove('active');
       menu.setAttribute('aria-hidden', 'true');
       if (toggle) toggle.setAttribute('aria-expanded', 'false');
     }

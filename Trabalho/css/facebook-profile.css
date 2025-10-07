@@ -106,6 +106,25 @@ body {
   box-shadow: var(--shadow-light);
 }
 
+.topbar__mini { 
+  width: 36px; 
+  height: 36px; 
+  border-radius: 50%; 
+  background: #f0f2f5; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-decoration: none; 
+  color: #1c1e21; 
+  border: none;
+} 
+
+.topbar__logo {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #1877f2; color: #fff; display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 24px; text-decoration: none;
+}
+
 .navbar-container {
   display: flex;
   align-items: center;
@@ -197,18 +216,6 @@ body {
   justify-content: flex-end;
 }
 
-.topbar__left { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-  flex: 0 0 auto;
-}
-.topbar__logo {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: #1877f2; color: #fff; display: inline-flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 24px; text-decoration: none;
-}
-
 .user-avatar-small {
   width: 32px;
   height: 32px;
@@ -289,13 +296,6 @@ body {
   z-index: 5; /* extra seguro para sobrepor tudo */
 }
 
-.edit-avatar {
-  border: none;
-  border-radius: 50%;
-  background-color: #0d5bb8;
-  cursor: pointer;
-}
-
 /* ... restante inalterado (apenas garanto que .profile-info esteja posicionado) ... */
 
 /* === INFORMAÇÕES DO PERFIL === */
@@ -303,10 +303,8 @@ body {
   position: relative; /* <- adicionado: z-index só funciona corretamente em elementos posicionados */
   padding: calc(var(--spacing-3xl) + 84px) var(--spacing-xl) var(--spacing-lg);
   background-color: var(--card);
-  height: 40vh;
   z-index: 1;         /* abaixo da capa (2) e do avatar (3+) */
 }
-
 
 .profile-info-content {
   display: flex;
@@ -314,36 +312,6 @@ body {
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* Responsividade: tablets e celulares */
-@media (max-width: 1024px) {
-  .profile-cover { height: 240px; }
-  .avatar-wrap { top: 190px; left: calc(var(--spacing-lg)); }
-  .avatar-lg { width: 140px; height: 140px; }
-  .profile-info { padding: calc(var(--spacing-2xl) + 64px) var(--spacing-md) var(--spacing-md); height: auto; }
-  .profile-info-content { flex-direction: column; gap: var(--spacing-md); align-items: stretch; }
-  .profile-info-right { justify-self: end; }
-}
-
-@media (max-width: 768px) {
-  .profile-cover { height: 160px; }
-  .avatar-wrap { position: relative; top: -56px; left: 50%; transform: translateX(-50%); }
-  .avatar-lg { width: 120px; height: 120px; }
-  .profile-info { padding-top: 72px; height: auto; }
-  .profile-info-content { padding: 0 12px; }
-  .profile-tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; padding: 8px 12px; }
-  .profile-tabs .tab, .profile-tabs .tab-menu { white-space: nowrap; }
-}
-
-@media (max-width: 480px) {
-  .profile-cover { height: 120px; }
-  .avatar-lg { width: 96px; height: 96px; border-width: 3px; }
-  .profile-name { font-size: clamp(1.25rem, 5vw, 1.5rem); }
-  .profile-friends { font-size: clamp(0.8rem, 3.5vw, 1rem); }
-  .profile-info-content { padding: 0 8px; }
-  .left-sidebar { display: none; }
-  .feed-container { width: 100%; padding: 0 8px; }
 }
 
 .profile-info-left {
@@ -372,6 +340,16 @@ body {
   display: flex;
   gap: var(--spacing-sm);
   align-items: center;
+}
+
+.edit-avatar {
+  border-radius: 50%;
+  background-color: #0d5bb8;
+  color: white;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
 }
 
 .btn {
@@ -430,12 +408,11 @@ body {
   background-color: var(--card);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  border-radius: 10px;
   overflow-x: auto;
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 10px;
-
+  border-radius: 10px;
 }
 
 .profile-tabs .tab {
@@ -1001,15 +978,12 @@ body {
   }
   
   .profile-cover {
-    position: absolute;
     height: 250px;
-    z-index: 1;
   }
   
   .avatar-wrap {
     left: var(--spacing-lg);
     bottom: 0px;
-
   }
   
   .avatar-lg {
@@ -2235,4 +2209,107 @@ body {
     top: var(--spacing-sm);
     right: var(--spacing-sm);
   }
+}
+
+/* ====== HOTFIX PERFIL RESPONSIVO ====== */
+/* 1) Nunca deixe nada vazar lateralmente */
+html, body { overflow-x: hidden; }
+
+/* 2) Abas ocupam 100% e rolam (evita corte) */
+.profile-tabs {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+}
+.profile-tabs .tab,
+.profile-tabs .tab-menu { white-space: nowrap; }
+
+/* 3) Containers principais sempre dentro do viewport */
+.profile-header,
+.profile-tabs,
+.posts-section,
+.post-form-card,
+.posts-feed,
+.post-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 4) Evita “apertar” botões em blocos com muitos itens */
+.posts-controls,
+.profile-actions,
+.post-form-buttons,
+.post-reactions { flex-wrap: wrap; }
+
+/* 5) Mobile: 1 coluna, sem sidebar, avatar/capa sem sobrepor e cartões alinhados */
+@media (max-width: 768px) {
+  .main-content { grid-template-columns: 1fr; gap: 12px; padding: 8px; }
+  .left-sidebar { display: none; }
+
+  .profile-cover { position: relative; height: 200px; z-index: 1; }
+  .avatar-wrap { 
+    position: relative; 
+    top: 90px; 
+    left:-22%; 
+    transform: translateX(-50%); 
+    z-index: 3;
+  }
+  .avatar-lg { width: 120px; height: 120px; }
+  .profile-info { 
+    padding-top: 80px; 
+    height: auto; 
+    position: relative;
+    z-index: 2;
+    background: var(--bg-primary);
+  }
+
+  /* Abas e cartões não “sangram” */
+  .profile-tabs { padding: 8px 12px; }
+  .profile-tabs .tab { padding: 12px 16px; font-size: 12px; }
+  .posts-section, .post-form-card, .posts-feed, .post-card {
+    margin-left: 0; margin-right: 0; border-radius: 10px;
+  }
+
+  /* Botões grandes se ajustam em 2 linhas */
+  .btn { flex: 1; min-width: 120px; justify-content: center; }
+  .posts-actions .posts-action-btn { flex: 1 1 140px; }
+}
+
+/* 6) Telefones menores: afina avatar/offset e largura dos botões */
+@media (max-width: 480px) {
+  .profile-cover { height: 160px; }
+  .avatar-wrap { 
+    left: 16px; 
+    transform: none;
+    top: 80px;
+    left: -25%;
+    z-index: 3;
+  }
+  .profile-info { 
+    padding: 60px 12px 12px; 
+    background: var(--bg-primary);
+    z-index: 2;
+  }
+  .profile-tabs .tab { padding: 8px 12px; }
+}
+@media (max-width: 430px) { 
+  .avatar-wrap { top: 80px; } 
+  .profile-info { padding-top: 70px; } 
+}
+@media (max-width: 414px) { 
+  .avatar-wrap { top: 80px; } 
+  .profile-info { padding-top: 65px; } 
+}
+@media (max-width: 390px) { 
+  .avatar-lg { width: 110px; height: 110px; } 
+  .avatar-wrap { top: 80px; } 
+  .profile-info { padding-top: 70px; } 
+}
+@media (max-width: 375px) { 
+  .avatar-lg { width: 104px; height: 104px; } 
+  .avatar-wrap { top: 75px; } 
+  .profile-info { padding-top: 65px; } 
+  .posts-actions .posts-action-btn { flex: 1 1 120px; } 
 }

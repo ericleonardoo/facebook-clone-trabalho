@@ -3,12 +3,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Scrollbar neutro (Webkit + Firefox) para evitar trilhos/brancos fortes em dark mode */
 :root {
   --scroll-track: #f1f1f1;
   --scroll-thumb: #c4c4c4;
+  --bg-primary: #f0f2f5;     
 }
 *::-webkit-scrollbar { width: 12px; height: 12px; }
 *::-webkit-scrollbar-track { background: var(--scroll-track); border-radius: 8px; }
@@ -22,84 +24,50 @@ img, video {
   display: block;
 }
 
+/* ================================================================ */
+/* ========= CÓDIGO DEFINITIVO E À PROVA DE FALHAS PARA O TEMA ========= */
+/* ================================================================ */
+
+/* --- TEMA CLARO (LIGHT MODE) --- */
+/* Esta regra se aplica SOMENTE QUANDO o body NÃO TIVER a classe .dark */
+body:not(.dark) {
+  --bg-primary: #f0f2f5;      /* Fundo da página cinza claro */
+  --bg-secondary: #ffffff;     /* Fundo dos componentes branco */
+  --text-primary: #050505;      /* Texto preto */
+  --border-color: #dddfe2;      /* Bordas cinzas claras */
+}
+
+/* --- TEMA ESCURO (DARK MODE) --- */
+/* Esta regra se aplica SOMENTE QUANDO o body TIVER a classe .dark */
+body.dark {
+  --bg-primary: #18191a;      /* Fundo da página preto */
+  --bg-secondary: #242526;     /* Fundo dos componentes cinza escuro */
+  --text-primary: #e4e6eb;      /* Texto branco */
+  --border-color: #3a3b3c;      /* Bordas cinzas escuras */
+}
+
+/* --- APLICAÇÃO GERAL DOS ESTILOS --- */
+/* Estas regras agora só leem as variáveis definidas acima */
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
-  color: #333;
-  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
-  overflow-x: hidden;
+  /* A linha abaixo é a mais importante. */
+  /* O !important é nossa "marreta" para garantir que nenhuma outra regra atrapalhe. */
+  background-color: var(--bg-primary) !important;
+  
+  color: var(--text-primary);
+  font-family: Arial, sans-serif; /* Seus outros estilos de body aqui */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-body.dark {
-  background: #18191a;
-  color: #e4e6eb;
+/* Regra única para todos os seus componentes */
+.stories-block, .card, .composer, .post, .menu, .hamburger, 
+.fb-left, .fb-right, .contacts-section, .post-card, .sidebar-card,
+.feed-container, .main-content, .post-item, .contact-item /* Adicione qualquer outro componente aqui */ {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
-body.dark .post {
-  background: #242526;
-}
-
-/* Garantir que blocos de UI fiquem escuros em modo dark para evitar manchas/brancos indesejados */
-body.dark .stories-block,
-body.dark .card,
-body.dark .composer,
-body.dark .story-card,
-body.dark .story-card--add,
-body.dark .post-form-card,
-body.dark .post-card,
-body.dark .sidebar-card {
-  background: #242526;
-  border-color: #3a3b3c;
-  color: #e4e6eb;
-}
-
-body.dark .story-card__thumb,
-body.dark .story-card--add .story-card__thumb,
-body.dark .story img {
-  filter: brightness(0.9);
-}
-
-/* Menu e hambúrguer escuros */
-body.dark .menu,
-body.dark .hamburger {
-  background: #242526;
-  border-color: #3e4042;
-}
-
-/* Sidebar escura */
-body.dark .fb-left,
-body.dark .fb-right,
-body.dark .contacts-section {
-  background: transparent;
-}
-
-/* Ajustar cores do scrollbar no modo escuro */
-body.dark {
-  --scroll-track: #212223;
-  --scroll-thumb: #4a4a4a;
-}
-
-/* Forçar uso de backgrounds neutros que respeitam modo escuro: */
-.stories-block,
-.card,
-.composer,
-.story-card,
-.story-card--add,
-.post-form-card,
-.post-card,
-.sidebar-card,
-.contacts-section { background: #fff; }
-
-body.dark .stories-block,
-body.dark .card,
-body.dark .composer,
-body.dark .story-card,
-body.dark .story-card--add,
-body.dark .post-form-card,
-body.dark .post-card,
-body.dark .sidebar-card,
-body.dark .contacts-section { background: #242526; border-color: #3a3b3c; }
-
-
 
 a {
   text-decoration: none;
@@ -117,7 +85,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
-}
+} 
 
 .topbar__left { 
   display: flex; 
@@ -179,6 +147,7 @@ a {
   justify-content: center; 
   text-decoration: none; 
   color: #1c1e21; 
+  border: none;
 }
 
 /* Hamburger menu */
@@ -186,17 +155,233 @@ a {
   position: fixed; 
   top: 56px; 
   right: 2vw; 
-  width: clamp(180px, 28vw, 220px); 
+  width: clamp(280px, 35vw, 360px); 
+  max-height: 85vh;
+  overflow-y: auto;
   background: #fff; 
   border: 1px solid #e4e6eb; 
   border-radius: 10px; 
   box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
-  padding: 8px; 
+  padding: 16px; 
   display: none; 
   z-index: 60; 
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hamburger.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hamburger__greeting {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e6eb;
+}
+
+.hamburger__section {
+  margin-bottom: 20px;
+}
+
+.hamburger__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #65676B;
+}
+
+.hamburger__menu {
+  list-style: none;
+}
+
+.hamburger__item {
+  margin-bottom: 8px;
+}
+
+.hamburger__link {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.hamburger__link:hover {
+  background-color: #f0f2f5;
+}
+
+.hamburger__icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger__text {
+  font-size: 15px;
+}
+
+.hamburger__separator {
+  border: none;
+  height: 1px;
+  background-color: #e4e6eb;
+  margin: 16px 0;
+}
+
+.hamburger__contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hamburger__contacts-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.hamburger__action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f2f5;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hamburger__contacts-list {
+  list-style: none;
+}
+
+.hamburger__contact-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: background-color 0.2s;
+}
+
+.hamburger__contact-item:hover {
+  background-color: #f0f2f5;
+}
+
+.hamburger__contact-item.active {
+  background-color: #e7f3ff;
+}
+
+.hamburger__contact-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hamburger__contact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hamburger__status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #31a24c;
+  border: 2px solid #fff;
+}
+
+.hamburger__contact-name {
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.hamburger__contact-badge {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #1877f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.hamburger__action-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.hamburger__action-button:hover {
+  background-color: #e4e6eb;
+}
+
+.hamburger__action-icon {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+/* Dark mode styles for hamburger menu */
+body.dark .hamburger {
+  background-color: #242526;
+  border-color: #3e4042;
+}
+
+body.dark .hamburger__greeting {
+  border-color: #3e4042;
+  color: #e4e6eb;
+}
+
+body.dark .hamburger__link:hover,
+body.dark .hamburger__contact-item:hover {
+  background-color: #3a3b3c;
+}
+
+body.dark .hamburger__contact-item.active {
+  background-color: #263951;
+}
+
+body.dark .hamburger__separator {
+  background-color: #3e4042;
+}
+
+body.dark .hamburger__action-btn,
+body.dark .hamburger__action-button {
+  background-color: #3a3b3c;
+  color: #e4e6eb;
+}
+
+body.dark .hamburger__action-button:hover {
+  background-color: #4e4f50;
 }
 .hamburger.aberto { 
   display: block; 
@@ -215,7 +400,7 @@ a {
 }
 
 .hamburger ul { list-style: none; }
-.hamburger__item { width: 100%; background: #f0f2f5; border: none; border-radius: 8px; padding: 10px 12px; cursor: pointer; text-align: left; }
+.hamburger__item { width: 100%; background: #f0f2f5; border: none; border-radius: 8px; padding: 10px 12px; cursor: pointer; text-align: left; margin-bottom: 10px; }
 
 /* Menu lateral */
 .menu {
@@ -924,7 +1109,7 @@ input[type="text"], input[type="search"], textarea {
   .post .acoes { grid-template-columns:1fr 1fr 1fr; }
 }
 
-/* DARK MODE */
+/* Dark mode */
 body.dark {
   background: #18191a;
   color: #e4e6eb;
@@ -935,6 +1120,64 @@ body.dark .menu,
 body.dark .login-box {
   background: #242526;
   color: #e4e6eb;
+}
+
+body.dark .stories-container,
+body.dark .feed-container,
+body.dark .main-content,
+body.dark .right-sidebar,
+body.dark .left-sidebar,
+body.dark .story-item,
+body.dark .post-item,
+body.dark .publish-container,
+body.dark .publish-input,
+body.dark .publish-actions,
+body.dark .contacts-list,
+body.dark .contact-item,
+body.dark .stories-section,
+body.dark .stories-wrapper,
+body.dark .stories-list,
+body.dark .story-create,
+body.dark .add-to-story,
+body.dark .post-composer,
+body.dark .post-form,
+body.dark .post-input,
+body.dark .post-options,
+body.dark .post-header,
+body.dark .post-content,
+body.dark .post-footer {
+  background-color: #18191a;
+  color: #e4e6eb;
+  border-color: #3a3b3c;
+}
+
+/* Corrigir elementos específicos que não estão respondendo ao tema */
+body.dark .stories-section,
+body.dark .story-item,
+body.dark .add-to-story,
+body.dark .post-composer,
+body.dark .post-form,
+body.dark .post-options,
+body.dark .post-item,
+body.dark .post-header,
+body.dark .post-content,
+body.dark .post-footer,
+body.dark .post-actions,
+body.dark .post-comments,
+body.dark .comment-form {
+  background-color: #242526;
+  color: #e4e6eb;
+  border-color: #3a3b3c;
+}
+
+/* Garantir que os cards de stories tenham fundo escuro */
+body.dark .story-card {
+  background-color: #242526;
+}
+
+/* Garantir que o fundo principal seja escuro */
+body.dark .main-content {
+  background-color: #18191a;
 }
 
 body.dark input,
