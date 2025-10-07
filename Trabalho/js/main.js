@@ -4,6 +4,10 @@ import { initLogin } from "./login.js";
 import { initTheme } from "./theme.js";
 import { initMenu } from "./menu.js";
 import { posts } from "./data.js";
+import { showToast } from "./toast.js";
+import { initSkeletonLoader } from './skeletonLoader.js';
+import { initStoryViewer } from './storyManager.js';
+// REMOVI a importação do postManager.js que estava causando o conflito.
 
 export function carregarMaisPosts() {
   const novos = [
@@ -15,14 +19,21 @@ export function carregarMaisPosts() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializações
+  // --- INICIALIZAÇÃO DOS MÓDulos ---
   renderPosts();
   renderStories();
   initLogin();
   initTheme();
   initMenu();
+  initSkeletonLoader(); // Corrigido para chamar apenas uma vez
+  // REMOVI a chamada initPostPublisher();
+  initStoryViewer();
 
-  // Botão publicar
+  // (Temporário) Expor a função de Toast para testes no console
+  window.showToast = showToast; 
+
+  // --- LÓGICA DE PUBLICAÇÃO RESTAURADA ---
+  // Seu código original que já funcionava perfeitamente.
   const btnPublicar = document.getElementById("btn-publicar");
   const inputPublicar = document.getElementById("novo-post-texto");
 
@@ -30,13 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
     btnPublicar.addEventListener("click", () => {
       const usuario = localStorage.getItem("usuario") || "Usuário Anônimo";
       const texto = inputPublicar.value.trim();
-      if (!texto) return alert("Digite algo antes de publicar!");
-      createPost(usuario, texto);
+      if (!texto) {
+          showToast("Você precisa escrever algo para publicar!", "error"); // Melhorado para usar seu Toast!
+          return;
+      }
+      createPost(usuario, texto); // Sua função principal de criar posts
       inputPublicar.value = "";
+      showToast('Publicação criada com sucesso!'); 
     });
   }
 
-  // Scroll infinito com debounce
+  // --- LÓGICA DE SCROLL INFINITO ---
   function debounce(fn, wait) {
     let t;
     return function(...args) {

@@ -57,14 +57,15 @@ body {
   color: var(--text-primary);
   font-family: Arial, sans-serif; /* Seus outros estilos de body aqui */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  overflow-y: hidden;
 }
 
 /* Regra única para todos os seus componentes */
 .stories-block, .card, .composer, .post, .menu, .hamburger, 
 .fb-left, .fb-right, .contacts-section, .post-card, .sidebar-card,
 .feed-container, .main-content, .post-item, .contact-item /* Adicione qualquer outro componente aqui */ {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+      background-color: #242526;
+   color: var(--text-primary);
   border: 1px solid var(--border-color);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
@@ -79,7 +80,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #ffffff;
+  background: #242526;
   border-bottom: 1px solid #e4e6eb;
   display: flex;
   align-items: center;
@@ -136,6 +137,7 @@ a {
 .topbar #user-display,
 .topbar * #user-display {
   display: none !important;
+  height: 60px; 
 }
 .topbar__mini { 
   width: 36px; 
@@ -429,6 +431,37 @@ body.dark .hamburger__action-button:hover {
   margin: 10px 0;
 }
 
+/* Estilo para o contêiner das notificações */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo da notificação individual */
+.toast {
+  background-color: #242526;
+  color: #e4e6eb;
+  padding: 15px 25px;
+  border-radius: 8px;
+  border-left: 5px solid #4CAF50; /* Verde para sucesso */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Animação de entrada */
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 /* Conteúdo principal */
 .conteudo {
   flex: 1;
@@ -460,7 +493,7 @@ input[type="text"], input[type="search"], textarea {
 }
 
 /* Stories */
-.stories-block { background: #fff; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+.stories-block { background: #242526; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; margin-bottom: 16px; overflow-x: hidden; }
 .stories-header { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px; }
 .stories-header h3 { font-size: 18px; color: #1c1e21; }
 .stories-header .see-all { color: #1877f2; text-decoration: none; font-weight: 600; }
@@ -488,6 +521,102 @@ input[type="text"], input[type="search"], textarea {
 /* Garantir layout horizontal e dimensões dentro da lista de stories */
 .stories .story { width: 112px; height: 198px; }
 .stories .story img { height: 100%; border-radius: 12px; }
+
+/* ======================================================= */
+/* ========= ESTILOS DO VISUALIZADOR DE STORIES ========= */
+/* ======================================================= */
+
+.story-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Começa escondido e com uma animação suave de fade-in */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.story-viewer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.story-viewer__image {
+  max-width: 90%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.story-viewer__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+}
+
+.story-viewer__author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.story-viewer__author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.story-viewer__close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.story-viewer__progress-bars {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  width: 0; /* Começa vazio */
+  background-color: white;
+  transition: width 5s linear; /* A duração da transição é a duração do story */
+}
 
 /* Feed */
 .feed {
@@ -776,7 +905,7 @@ input[type="text"], input[type="search"], textarea {
 .contacts { list-style: none; display: grid; gap: 8px; }
 
 /* Composer */
-.composer { background: #fff; margin-bottom: 12px; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; display: flex; gap: 8px; }
+.composer { background: #242526; margin-bottom: 12px; border: 1px solid #e4e6eb; border-radius: 10px; padding: 12px; display: flex; gap: 8px; }
 .composer input { flex: 1; background: #f0f2f5; border: none; border-radius: 20px; padding: 10px 14px; }
 .composer button { background: #1877f2; color: #fff; border: none; border-radius: 20px; padding: 10px 16px; cursor: pointer; }
 

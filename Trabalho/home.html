@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
   <link rel="manifest" href="manifest.json">
-  
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
 </head>
 <body>
   <!-- Topbar -->
@@ -46,7 +46,7 @@
         <li class="hamburger__item">
           <a href="perfil/indexprofile.html" class="hamburger__link">
             <div class="hamburger__icon profile-icon">
-              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRjYzNDciLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0iI0ZGRiIvLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDx0ZXh0IHg9IjIwIiB5PSIzNSIgZmlsbD0iI0ZGRiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5FPC90ZXh0Pgo8L3N2Zz4K" alt="Eric Leonardo Carvalho">
+              <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face" alt="Eric Leonardo Carvalho">
             </div>
             <span class="hamburger__text">Eric Leonardo Carvalho</span>
           </a>
@@ -215,14 +215,6 @@
 
         <li class="hamburger__contact-item">
           <div class="hamburger__contact-avatar">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Gleisson Ferreira">
-            <div class="hamburger__status-indicator online"></div>
-          </div>
-          <span class="hamburger__contact-name">Gleisson Ferreira</span>
-        </li>
-
-        <li class="hamburger__contact-item">
-          <div class="hamburger__contact-avatar">
             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Marilene Alves">
             <div class="hamburger__status-indicator online"></div>
           </div>
@@ -275,7 +267,7 @@
           <li class="sidebar-item">
             <a href="perfil/indexprofile.html" class="sidebar-link">
               <div class="sidebar-icon profile-icon">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRjYzNDciLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0iI0ZGRiIvLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDx0ZXh0IHg9IjIwIiB5PSIzNSIgZmlsbD0iI0ZGRiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5FPC90ZXh0Pgo8L3N2Zz4K" alt="Eric Leonardo Carvalho">
+                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face" alt="Eric Leonardo Carvalho">
               </div>
               <span class="sidebar-text">Eric Leonardo Carvalho</span>
             </a>
@@ -482,7 +474,7 @@
 
           <div class="contact-item">
             <div class="contact-avatar">
-              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Gleisson Ferreira">
+              <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face" alt="Gleisson Ferreira">
               <div class="status-indicator online"></div>
             </div>
             <span class="contact-name">Gleisson Ferreira</span>
@@ -560,20 +552,35 @@
     </aside>
   </div>
 
+  
   <script type="module" src="js/main.js"></script>
   <script src="theme.js"></script>
   <script src="js/notifications.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/pwabuilder-sw.js')
-        .then(function(registration) {
-          console.log('Service Worker registrado com sucesso:', registration);
-        })
-        .catch(function(error) {
-          console.log('Erro ao registrar Service Worker:', error);
-        });
+      .then(function(registration) {
+        console.log('Service Worker registrado com sucesso:', registration);
+      })
+      .catch(function(error) {
+        console.log('Erro ao registrar Service Worker:', error);
+      });
     }
-  </script>
+    </script>
+    <div id="toast-container"></div>
+
+    <div id="story-viewer" class="story-viewer">
+  <div class="story-viewer__progress-bars">
+    </div>
+  <div class="story-viewer__header">
+    <div class="story-viewer__author">
+      <img id="story-author-avatar" src="" alt="Avatar">
+      <span id="story-author-name"></span>
+    </div>
+    <button id="story-viewer-close" class="story-viewer__close-btn">&times;</button>
+  </div>
+  <img id="story-image" class="story-viewer__image" src="" alt="Story Image">
+</div>
 </body>
 </html>
 

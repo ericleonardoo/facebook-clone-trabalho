@@ -15,7 +15,7 @@ export function renderStories() {
     `;
     storiesContainer.appendChild(storyElement);
 
-    storyElement.addEventListener("click", () => abrirModalStory(index));
+/*    storyElement.addEventListener("click", () => abrirModalStory(index)); */
   });
 }
 
